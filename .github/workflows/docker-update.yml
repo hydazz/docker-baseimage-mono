@@ -22,10 +22,10 @@ jobs:
       id: variables
       env:
         GIT_USER: hydazz
-        GIT_REPO: docker-baseimage-alpine-mono
+        GIT_REPO: docker-baseimage-mono
         GIT_BRANCH: main
-        DOCKERHUB_IMAGE: vcxpz/baseimage-alpine-mono
-        DOCKERIMAGE_TAG: latest
+        DOCKERHUB_IMAGE: vcxpz/baseimage-mono
+        DOCKERIMAGE_TAG: mono
       run: |
         mkdir /tmp/workdir
         echo "::set-output name=GIT_USER::$GIT_USER"
