@@ -41,7 +41,7 @@ RUN \
   --disable-boehm \
   --enable-parallel-mark \
   --with-mcs-docs=no \
-  --without-sigaltstack
+  --without-sigaltstack && \
  make -j1 && \
  make install && \
  echo "**** Cleanup ****" && \
