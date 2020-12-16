@@ -33,7 +33,8 @@ RUN \
  cd /tmp/ && \
  tar -xf mono-${MONO_VERSION}.tar.xz && \
  cd mono-${MONO_VERSION} && \
- sed -i 's|$mono_libdir/||g' data/config.in && \
+ sed -i 's|$mono_libdir/||g' \
+  data/config.in && \
  sed -i '/exec "/ i\paxmark mr "$(readlink -f "$MONO_EXECUTABLE")"' \
   runtime/mono-wrapper.in && \
  ./autogen.sh \
@@ -47,10 +48,9 @@ RUN \
   --enable-parallel-mark \
   --with-mcs-docs=no \
   --without-sigaltstack && \
- make -j1 && \
- make install && \
+ make > /dev/null && \
+ make install > /dev/null && \
  echo "**** Cleanup ****" && \
- cd .. && \
  apk del --purge \
  build-dependencies && \
  rm -rf \
