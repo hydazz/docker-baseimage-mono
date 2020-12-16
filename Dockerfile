@@ -33,17 +33,22 @@ RUN \
  git submodule update --init --recursive && \
  git fetch && git checkout mono-${mono_version} && git submodule update --init --recursive && \
  ./autogen.sh \
- --prefix=/usr/local \
- --with-mcs-docs=no \
- --with-sigaltstack=no \
- --disable-nls && \
+  --prefix=/usr/local \
+  --with-mcs-docs=no \
+  --with-sigaltstack=no \
+  --disable-nls && \
  ln -s /usr/bin/python3 /usr/bin/python && \
  sed -i 's/HAVE_DECL_PTHREAD_MUTEXATTR_SETPROTOCOL/0/' \
   mono/utils/mono-os-mutex.h && \
  make -j16 && \
  make install && \
  echo "**** Cleanup ****" && \
+ apk del --purge \
+	build-dependencies \
  rm -rf \
   /usr/local/include \
+  /usr/lib/*.la \
+  /usr/lib/mono/*/Mono.Security.Win32* \
+  /usr/lib/libMonoSupportW.* \
   /build && \
  find /usr/local -name \*.a | xargs rm
