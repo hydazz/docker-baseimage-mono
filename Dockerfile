@@ -11,6 +11,7 @@ RUN \
   automake \
   libtool \
   musl-dev \
+  gettext \
   cmake \
   linux-headers \
   gdb \
