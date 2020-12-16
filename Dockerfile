@@ -1,56 +1,49 @@
 FROM vcxpz/baseimage-alpine
 
+ARG mono_version=6.10.0.105
+
 RUN \
  echo "**** Install Build Packages ****" && \
  apk add --no-cache --virtual=build-dependencies \
-  libgcc \
+  gcc \
   g++ \
   make \
   python3 \
+  xz \
   autoconf \
   automake \
   libtool \
   musl-dev \
-  gettext \
   cmake \
   linux-headers \
   gdb \
   strace \
-  git \
-  linux-headers && \
+  linux-headers \
+  curl \
+  git && \
  echo "**** Install Runtime Packages ****" && \
  apk add --no-cache \
-  gcc \
   mediainfo \
-  unzip \
-  sqlite \
-  libcurl && \
+  sqlite && \
  echo "**** Dowload and build mono ****" && \
- git clone https://github.com/mono/mono.git /tmp/mono && \
- cd /tmp/mono && \
- sed -i 's|$mono_libdir/||g' \
-  data/config.in && \
- sed -i '/exec "/ i\paxmark mr "$(readlink -f "$MONO_EXECUTABLE")"' \
-  runtime/mono-wrapper.in && \
+ mkdir /build && \
+ cd /build && \
+ git clone https://github.com/mono/mono.git && \
+ cd /build/mono && \
+ git submodule update --init --recursive && \
+ git fetch && git checkout mono-${mono_version} && git submodule update --init --recursive && \
  ./autogen.sh \
-  --prefix=/usr \
-  --sysconfdir=/etc \
-  --mandir=/usr/share/man \
-  --infodir=/usr/share/info \
-  --localstatedir=/var \
-  --disable-rpath \
-  --disable-boehm \
-  --enable-parallel-mark \
-  --with-mcs-docs=no \
-  --without-sigaltstack && \
- make > /dev/null && \
- make install > /dev/null && \
+ --prefix=/usr/local \
+ --with-mcs-docs=no \
+ --with-sigaltstack=no \
+ --disable-nls && \
+ ln -s /usr/bin/python3 /usr/bin/python && \
+ sed -i 's/HAVE_DECL_PTHREAD_MUTEXATTR_SETPROTOCOL/0/' \
+  mono/utils/mono-os-mutex.h && \
+ make -j16 && \
+ make install && \
  echo "**** Cleanup ****" && \
- apk del --purge \
- build-dependencies && \
  rm -rf \
-  /usr/lib/*.la \
-  /tmp/* \
-  /root/.cache \
-  /usr/lib/mono/*/Mono.Security.Win32* \
-  /usr/lib/libMonoSupportW.*
+  /usr/local/include \
+  /build && \
+ find /usr/local -name \*.a | xargs rm
