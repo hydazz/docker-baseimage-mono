@@ -25,7 +25,7 @@ RUN \
   sqlite \
   libcurl && \
  echo "**** Dowload and build mono ****" && \
- git clone https://github.com/mono/mono.git /tmp/mono
+ git clone https://github.com/mono/mono.git /tmp/mono && \
  cd /tmp/mono && \
  sed -i 's|$mono_libdir/||g' \
   data/config.in && \
