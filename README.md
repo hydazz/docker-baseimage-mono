@@ -12,4 +12,5 @@ A custom base image built with [Alpine linux][appurl], [mono][monourl] and [s6-o
 | Alpine | Edge |
 | Mono | 5.20.1.19 |
 | s6-overlay | 2.1.0.2 |
+
 *See *package_versions.txt* for more detail
