@@ -8,7 +8,6 @@ RUN \
   gcc \
   g++ \
   make \
-  python3 \
   xz \
   autoconf \
   automake \
@@ -23,8 +22,12 @@ RUN \
   git && \
  echo "**** Install Runtime Packages ****" && \
  apk add --no-cache \
-  mediainfo \
-  sqlite && \
+	bzip2 \
+	libcurl \
+	mediainfo \
+	python3 \
+	sqlite \
+	unzip && \
  echo "**** Dowload and build mono ****" && \
  mkdir /build && \
  cd /build && \
@@ -44,7 +47,7 @@ RUN \
  make install && \
  echo "**** Cleanup ****" && \
  apk del --purge \
-	build-dependencies \
+	build-dependencies && \
  rm -rf \
   /usr/local/include \
   /usr/lib/*.la \
