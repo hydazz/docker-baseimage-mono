@@ -1,6 +1,6 @@
 FROM vcxpz/baseimage-alpine
 
-ARG mono_version=6.10.0.105
+ARG mono_version=6.12.0.107
 
 RUN \
  echo "**** Install Build Packages ****" && \
