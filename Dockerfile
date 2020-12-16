@@ -22,7 +22,12 @@ RUN \
   linux-headers && \
  echo "**** Install Runtime Packages ****" && \
  apk add --no-cache \
-  gcc && \
+  gcc \
+  mediainfo \
+  unzip \
+  sqlite \
+  libcurl \
+  curl && \
  echo "**** Dowload and build mono ****" && \
  curl https://download.mono-project.com/sources/mono/mono-${MONO_VERSION}.tar.xz --output /tmp/mono-${MONO_VERSION}.tar.xz && \
  cd /tmp/ && \
