@@ -1,8 +1,5 @@
 FROM vcxpz/baseimage-alpine
 
-# environment settings
-ARG MONO_VERSION="6.12.0.107"
-
 RUN \
  echo "**** Install Build Packages ****" && \
  apk add --no-cache --virtual=build-dependencies \
@@ -26,13 +23,10 @@ RUN \
   mediainfo \
   unzip \
   sqlite \
-  libcurl \
-  curl && \
+  libcurl && \
  echo "**** Dowload and build mono ****" && \
- curl https://download.mono-project.com/sources/mono/mono-${MONO_VERSION}.tar.xz --output /tmp/mono-${MONO_VERSION}.tar.xz && \
- cd /tmp/ && \
- tar -xf mono-${MONO_VERSION}.tar.xz && \
- cd mono-${MONO_VERSION} && \
+ git clone https://github.com/mono/mono.git /tmp/mono
+ cd /tmp/mono && \
  sed -i 's|$mono_libdir/||g' \
   data/config.in && \
  sed -i '/exec "/ i\paxmark mr "$(readlink -f "$MONO_EXECUTABLE")"' \
