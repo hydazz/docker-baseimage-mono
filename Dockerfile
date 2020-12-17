@@ -1,7 +1,7 @@
 FROM vcxpz/baseimage-alpine
 
 RUN \
- echo "**** Install Packages ****" && \
+ echo "**** install packages ****" && \
  apk add --no-cache \
 	curl \
   icu-libs \
