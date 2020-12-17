@@ -4,9 +4,17 @@ RUN \
  echo "**** Install Packages ****" && \
  apk add --no-cache \
 	curl \
-	icu-libs \
-	libintl \
-	libmediainfo \
-	sqlite-libs && \
+  icu-libs \
+  jq \
+  libcurl \
+  libgcc \
+  libmediainfo \
+  libstdc++ \
+  libzen \
+  nghttp2-libs \
+  oniguruma \
+  sqlite-libs \
+  tinyxml2 && \
  apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-	mono
+	mono \
+  mono-dev
