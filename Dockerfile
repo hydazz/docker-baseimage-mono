@@ -4,17 +4,13 @@ RUN \
  echo "**** install packages ****" && \
  apk add --no-cache \
 	curl \
-  icu-libs \
-  jq \
-  libcurl \
-  libgcc \
-  libmediainfo \
-  libstdc++ \
-  libzen \
-  nghttp2-libs \
-  oniguruma \
-  sqlite-libs \
-  tinyxml2 && \
+     jq \
+     icu-libs \
+     libcurl \
+     libgcc \
+     libmediainfo \
+     sqlite-libs && \
  apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-	mono \
-  mono-dev
+	mono && \
+ echo "**** fix mono certs ****" && \
+ cert-sync /etc/ssl/certs/ca-certificates.crt
