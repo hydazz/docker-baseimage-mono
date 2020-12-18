@@ -2,7 +2,7 @@
 [s6overlay]: https://github.com/just-containers/s6-overlay
 [monourl]: https://www.mono-project.com
 
-## Alpine Edge split of [linuxserver/docker-baseimage-mono](https://github.com/linuxserver/docker-baseimage-mono/)
+## Alpine Edge fork of [linuxserver/docker-baseimage-mono](https://github.com/linuxserver/docker-baseimage-mono/)
 
 A custom base image built with [Alpine Linux][appurl], [Mono][monourl] and [s6-overlay][s6overlay]
 
