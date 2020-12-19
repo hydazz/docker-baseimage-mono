@@ -1,5 +1,11 @@
 FROM vcxpz/baseimage-alpine
 
+# set version label
+ARG BUILD_DATE
+ARG VERSION
+LABEL build_version="Fork of Linuxserver.io version:- ${VERSION} Build date:- ${BUILD_DATE}"
+LABEL maintainer="hydaz"
+
 RUN \
  echo "**** install packages ****" && \
  apk add --no-cache \
