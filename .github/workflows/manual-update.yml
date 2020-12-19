@@ -24,7 +24,7 @@ jobs:
         GIT_REPO: docker-baseimage-mono
         GIT_BRANCH: main
         DOCKERHUB_IMAGE: vcxpz/baseimage-mono
-        DOCKERIMAGE_TAG: alpine
+        DOCKERIMAGE_TAG: latest
       run: |
         echo "::set-output name=GIT_USER::$GIT_USER"
         echo "::set-output name=GIT_REPO::$GIT_REPO"
