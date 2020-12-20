@@ -18,5 +18,6 @@ RUN \
      sqlite-libs && \
  apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
 	mono && \
+	mono-dev && \
  echo "**** fix mono certs ****" && \
  cert-sync /etc/ssl/certs/ca-certificates.crt
