@@ -6,7 +6,7 @@
 
 A custom base image built with [Alpine Linux][appurl], [Mono][monourl] and [s6-overlay][s6overlay]
 
-[![Docker hub](https://img.shields.io/badge/docker%20hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/repository/docker/vcxpz/baseimage-alpine) ![Docker Image Size](https://img.shields.io/docker/image-size/vcxpz/baseimage-mono?style=for-the-badge&logo=docker) [![Autobuild](https://img.shields.io/badge/auto%20build-weekly-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-baseimage-mono/actions?query=workflow%3A%22Docker+Update+CI%22)
+[![Docker hub](https://img.shields.io/badge/docker%20hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/repository/docker/vcxpz/baseimage-mono) ![Docker Image Size](https://img.shields.io/docker/image-size/vcxpz/baseimage-mono?style=for-the-badge&logo=docker) [![Autobuild](https://img.shields.io/badge/auto%20build-weekly-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-baseimage-mono/actions?query=workflow%3A%22Docker+Update+CI%22)
 
 ## Version Information
 
