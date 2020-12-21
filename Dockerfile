@@ -8,19 +8,20 @@ LABEL maintainer="Alex Hyde"
 
 RUN \
  echo "https://alpine.spritsail.io/mono" >/etc/apk/repositories && \
- curl https://alpine.spritsail.io/spritsail-alpine.rsa.pub -o /etc/apk/keys/spritsail-alpine.rsa.pub && \
  echo "**** install build packages ****" && \
  apk add --no-cache --virtual=build-dependencies --upgrade \
-	curl \
-     ca-certificates-mono && \
+	curl && \
+ curl https://alpine.spritsail.io/spritsail-alpine.rsa.pub -o /etc/apk/keys/spritsail-alpine.rsa.pub && \
  echo "**** install runtime packages ****" && \
  apk add --no-cache \
      libmediainfo \
      sqlite-libs \
-     mono-runtime && \
+     mono-runtime \
+     ca-certificates-mono && \
  update-ca-certificates && \
  echo "**** cleanup ****" && \
  apk del --purge \
- build-dependencies && \
-     rm -rf \
+     build-dependencies \
+     curl && \
+ rm -rf \
      /tmp/*
