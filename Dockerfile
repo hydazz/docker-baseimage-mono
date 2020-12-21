@@ -7,6 +7,8 @@ LABEL build_version="Fork of Linuxserver.io version:- ${VERSION} Build-date:- ${
 LABEL maintainer="Alex Hyde"
 
 RUN \
+ echo "https://alpine.spritsail.io/mono" >/etc/apk/repositories && \
+ curl https://alpine.spritsail.io/spritsail-alpine.rsa.pub -o /etc/apk/keys/spritsail-alpine.rsa.pub && \
  echo "**** install build packages ****" && \
  apk add --no-cache --virtual=build-dependencies --upgrade \
 	curl \
@@ -14,9 +16,7 @@ RUN \
  echo "**** install runtime packages ****" && \
  apk add --no-cache \
      libmediainfo \
-     sqlite-libs && \
- curl https://alpine.spritsail.io/spritsail-alpine.rsa.pub -o /etc/apk/keys/spritsail-alpine.rsa.pub && \
- apk add --no-cache --repository https://alpine.spritsail.io/mono \
+     sqlite-libs \
      mono-runtime && \
  update-ca-certificates && \
  echo "**** cleanup ****" && \
