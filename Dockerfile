@@ -7,17 +7,20 @@ LABEL build_version="Fork of Linuxserver.io version:- ${VERSION} Build-date:- ${
 LABEL maintainer="Alex Hyde"
 
 RUN \
+ echo "**** install build packages ****" && \
+ apk add --no-cache --virtual=build-dependencies --upgrade \
+	curl \
+     ca-certificates-mono && \
  echo "**** install runtime packages ****" && \
  apk add --no-cache \
-	curl \
-     jq \
-     icu-libs \
-     libcurl \
-     libgcc \
      libmediainfo \
      sqlite-libs && \
- apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-	mono \
-	mono-dev && \
- echo "**** fix mono certs ****" && \
- cert-sync /etc/ssl/certs/ca-certificates.crt
+ curl https://alpine.spritsail.io/spritsail-alpine.rsa.pub -o /etc/apk/keys/spritsail-alpine.rsa.pub && \
+ apk add --no-cache --repository https://alpine.spritsail.io/mono \
+     mono-runtime && \
+ update-ca-certificates && \
+ echo "**** cleanup ****" && \
+ apk del --purge \
+ build-dependencies && \
+     rm -rf \
+     /tmp/*
