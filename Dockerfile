@@ -20,7 +20,5 @@ RUN \
      ca-certificates-mono && \
  update-ca-certificates && \
  echo "**** cleanup ****" && \
- apk del \
-     ca-certificates-mono && \
  rm -rf \
      /tmp/*
