@@ -11,14 +11,15 @@ RUN \
  apk add --no-cache \
 	curl && \
  curl https://alpine.spritsail.io/spritsail-alpine.rsa.pub -o /etc/apk/keys/spritsail-alpine.rsa.pub && \
- echo "https://alpine.spritsail.io/mono" >>/etc/apk/repositories && \
  echo "**** install runtime packages ****" && \
  apk add --no-cache \
      libmediainfo \
-     sqlite-libs \
-     mono-runtime \
-     ca-certificates-mono && \
- update-ca-certificates && \
+     sqlite-libs && \
+ apk add --no-cache --repository https://alpine.spritsail.io/mono \
+     mono-runtime && \
+ echo "**** fix certs ****" && \
+ cert-sync /etc/ssl/certs/ca-certificates.crt && \
  echo "**** cleanup ****" && \
  rm -rf \
+     /etc/apk/keys/spritsail-alpine.rsa.pub \
      /tmp/*
