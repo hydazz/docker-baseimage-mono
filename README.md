@@ -10,5 +10,8 @@ A custom base image built with [Alpine Linux][appurl], [Mono][monourl] and [s6-o
 ## Version Information
 ![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![s6overlay](https://img.shields.io/badge/s6--overlay-2.1.0.2-blue?style=for-the-badge) ![mono](https://img.shields.io/badge/mono-6.8.0.123-blue?style=for-the-badge) [![moredetail](https://img.shields.io/badge/more-detail-blue?style=for-the-badge)](https://github.com/hydazz/docker-baseimage-mono/blob/main/package_versions.txt)
 
+## Credits
+* [spritsail/mono-apk](https://github.com/spritsail/mono-apk) for the up-to-date mono packages
+
 ## Todo
 * Nothing, everything works 🙂
