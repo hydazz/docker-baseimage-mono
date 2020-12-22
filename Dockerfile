@@ -7,19 +7,21 @@ LABEL build_version="Fork of Linuxserver.io version:- ${VERSION} Build-date:- ${
 LABEL maintainer="Alex Hyde"
 
 RUN \
- echo "**** install curl ****" && \
- apk add --no-cache \
-     curl && \
- curl https://alpine.spritsail.io/spritsail-alpine.rsa.pub -o /etc/apk/keys/spritsail-alpine.rsa.pub && \
- echo "**** install runtime packages ****" && \
- apk add --no-cache \
-     libmediainfo \
-     sqlite-libs && \
- apk add --no-cache --repository https://alpine.spritsail.io/mono \
-     mono-runtime \
-     ca-certificates-mono && \
- update-ca-certificates && \
- echo "**** cleanup ****" && \
- rm -rf \
-     /etc/apk/keys/spritsail-alpine.rsa.pub \
-     /tmp/*
+   echo "**** install build packages ****" && \
+   apk add --no-cache --virtual=build-dependencies \
+      curl && \
+   curl https://alpine.spritsail.io/spritsail-alpine.rsa.pub -o /etc/apk/keys/spritsail-alpine.rsa.pub && \
+   echo "**** install runtime packages ****" && \
+   apk add --no-cache \
+      libmediainfo \
+      sqlite-libs && \
+   apk add --no-cache --repository https://alpine.spritsail.io/mono \
+      mono-runtime \
+      ca-certificates-mono && \
+   update-ca-certificates && \
+   echo "**** cleanup ****" && \
+   apk del --purge \
+      build-dependencies && \
+   rm -rf \
+      /etc/apk/keys/spritsail-alpine.rsa.pub \
+      /tmp/*
