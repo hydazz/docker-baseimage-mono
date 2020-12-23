@@ -1,4 +1,4 @@
 {
-"overlay_version": "overlayversion",
-"mono_version": "monoversion"
+  "overlay_version": "2.1.0.2",
+  "mono_version": "6.8.0.123"
 }
