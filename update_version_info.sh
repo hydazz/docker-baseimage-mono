@@ -7,9 +7,9 @@ OLD_OVERLAY_VERSION=$(cat version_info.json | jq -r .overlay_version)
 OLD_MONO_VERSION=$(cat version_info.json | jq -r .mono_version)
 
 sed -i \
-  -e "s/${OLD_OVERLAY_VERSION}/${OVERLAY_VERSION}/g" \
-  -e "s/${OLD_MONO_VERSION}/${MONO_VERSION}/g" \
-  README.md
+	-e "s/${OLD_OVERLAY_VERSION}/${OVERLAY_VERSION}/g" \
+	-e "s/${OLD_MONO_VERSION}/${MONO_VERSION}/g" \
+	README.md
 
 NEW_VERSION_INFO="overlay_version|mono_version
 ${OVERLAY_VERSION}|${MONO_VERSION}"
