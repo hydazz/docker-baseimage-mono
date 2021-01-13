@@ -28,7 +28,7 @@ jobs:
         id: variables
         env:
           DOCKERHUB_USER: vcxpz
-          DOCKERHUB_IMAGE: baseimage-alpine
+          DOCKERHUB_IMAGE: baseimage-alpine-mono
           DOCKERIMAGE_TAG: latest
           PLATFORMS: linux/amd64,linux/arm64
         run: |
