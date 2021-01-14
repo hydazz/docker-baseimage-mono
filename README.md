@@ -1,9 +1,3 @@
-[appurl]: https://alpinelinux.org
-
-[s6overlay]: https://github.com/just-containers/s6-overlay
-
-[monourl]: https://www.mono-project.com
-
 ## docker-baseimage-alpine-mono
 
 [![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/vcxpz/baseimage-alpine-mono) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/baseimage-alpine-mono?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-baseimage-alpine-mono/actions?query=workflow%3A"Auto+Builder+CI")
@@ -21,3 +15,7 @@ A custom base image built with [Alpine Linux][appurl], [Mono][monourl] and [s6 o
 **[See here for a list of packages](https://github.com/hydazz/docker-baseimage-alpine-mono/blob/main/package_versions.txt)**
 
 **Read the official [README](https://github.com/linuxserver/docker-baseimage-alpine-mono/) for more information**
+
+[appurl]: https://alpinelinux.org
+[s6overlay]: https://github.com/just-containers/s6-overlay
+[monourl]: https://www.mono-project.com
