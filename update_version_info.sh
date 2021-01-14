@@ -1,10 +1,10 @@
 #!/bin/bash
 
 OVERLAY_VERSION=$(curl -sX GET "https://raw.githubusercontent.com/hydazz/docker-baseimage-alpine/main/version_info.json" | jq -r .overlay_version)
-MONO_VERSION=$(cat package_versions.txt | grep -E "mono-runtime.*?-" | sed -n 1p | cut -c 14- | sed -E 's/-r.*//g')
+MONO_VERSION=$(grep <package_versions.txt -E "mono-runtime.*?-" | sed -n 1p | cut -c 14- | sed -E 's/-r.*//g')
 
-OLD_OVERLAY_VERSION=$(cat version_info.json | jq -r .overlay_version)
-OLD_MONO_VERSION=$(cat version_info.json | jq -r .mono_version)
+OLD_OVERLAY_VERSION=$(jq <version_info.json -r .overlay_version)
+OLD_MONO_VERSION=$(jq <version_info.json -r .mono_version)
 
 sed -i \
 	-e "s/${OLD_OVERLAY_VERSION}/${OVERLAY_VERSION}/g" \
