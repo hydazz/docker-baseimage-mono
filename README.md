@@ -6,12 +6,6 @@ Fork of [linuxserver/docker-baseimage-alpine-mono](https://github.com/linuxserve
 
 A custom base image built with [Alpine Linux][appurl], [Mono][monourl] and [s6 overlay][s6overlay]
 
-## Version Information
-
-![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![mono](https://img.shields.io/badge/mono-6.12.0.107-blue?style=for-the-badge)
-
-See [package_versions.txt](package_versions.txt) for a full list of the packages and package versions used in this image
-
 **Read the official [README.md](https://github.com/linuxserver/docker-baseimage-alpine-mono/) for more information**
 
 [appurl]: https://alpinelinux.org
