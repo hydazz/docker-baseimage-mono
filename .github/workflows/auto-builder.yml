@@ -7,7 +7,7 @@ on:
   repository_dispatch:
 
 jobs:
-  alpine-edge:
+  alpine-latest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -41,7 +41,6 @@ jobs:
             --output "type=docker" \
             --build-arg BUILD_DATE="$(date +%Y-%m-%d)" \
             --tag vcxpz/ci-build:ci-build \
-            --build-arg TAG=edge \
             --file Dockerfile .
 
       - name: Build And Push The Docker Image
@@ -49,10 +48,8 @@ jobs:
           docker buildx build \
             --platform=linux/amd64,linux/arm64 \
             --output "type=image,push=true" \
-            --build-arg TAG=edge \
             --build-arg BUILD_DATE="$(date +%Y-%m-%d)" \
             --tag vcxpz/baseimage-alpine-mono:latest \
-            --tag vcxpz/baseimage-alpine-mono:edge \
             --file Dockerfile .
 
       - name: Get New Package Versions From Image
