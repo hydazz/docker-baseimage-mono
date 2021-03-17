@@ -1,6 +1,6 @@
 FROM vcxpz/baseimage-alpine:latest
 
-RUN \
+RUN set -xe && \
 	echo "**** install runtime packages ****" && \
 	apk add --no-cache \
 		ca-certificates-mono \
